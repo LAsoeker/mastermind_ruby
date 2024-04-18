@@ -65,27 +65,17 @@ class Board
   end
 
   def display_feedback_view(player_name, row)
-    display_rules(player_name)
-    
-    # puts "\n\t\u2554" + ("\u2550" * 4 + "\u2566") * (@state[0..3].length) + "\u2550" * 9 + "\u2557"
-    # @state[row].each_with_index do |element, index|
-    #   new_row = @state[row][0..3].map do |item| 
-    #     if item == "empty"
-    #       item = " #{@peg_colors[item]}  "
-    #     else 
-    #       item = " #{@peg_colors[item]} "
-    #     end
-    #   end
-    #   #HERE display funktioniert noch nicht richtig
-    #   new_feedback_values = @state[row][4..7].map {|item| "#{@feedback_colors[item]}"}.join(" ")
-
-    #   puts "\t\u2551#{new_row.join("\u2551")}\u2551 #{new_feedback_values} \u2551"
-    #   if index == @state.length - 1  
-    #     puts "\t\u255A" + ("\u2550" * 4 + "\u2569") * @state[0..3].length + "\u2550" * 9 + "\u255D"
-    #   else
-    #     puts "\t\u2560" + ("\u2550" * 4 + "\u256C") * @state[0..3].length + "\u2550" * 9 + "\u2563"
-    #   end
-    # end
+    puts "#### THIS IS THE FEEDBACK VIEW ###"
+    puts "\t\u2554" + ("\u2550" * 29) + "\u2557"
+    code_row = @code_to_break.map do |item|
+      if item == "empty"
+        item = " #{@peg_colors[item]} "
+      else 
+        item = " #{@peg_colors[item]} "
+      end
+    end
+    puts "\t\u2551     #{code_row.join(" ")}     \u2551"
+    puts "\t\u255A" + ("\u2550" * 29) + "\u255D"
   end
 
   def set_move(row, col, color)

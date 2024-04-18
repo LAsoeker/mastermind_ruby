@@ -36,8 +36,10 @@ class Mastermind
         play_round_codebreaker()
       elsif @game_mode == @game_modi[:codesetter]
         player_set_code
-        play_round_codesetter()
+        @game_over = true
+        # play_round_codesetter()
       else
+        puts "SORRY THIS MODE IS NOT FINISHED"
         #code for PvP
       end
     end
@@ -47,36 +49,36 @@ class Mastermind
 
   def player_set_code 
     satisfied_with_code = false
-    until satisfied_with_code
-      4.times do |i|
-        clear_screen
-        @board.display_codesetter_view(@player.name)
-        @board.set_code(i, @player.get_move(i))
-      end
-      clear_screen
-      @board.display_codesetter_view(@player.name)
+    puts "SORRY THIS MODE IS NOT FINISHED"
+    # until satisfied_with_code
+    #   4.times do |i|
+    #     clear_screen
+    #     @board.display_codesetter_view(@player.name)
+    #     @board.set_code(i, @player.get_move(i))
+    #   end
+    #   clear_screen
+    #   @board.display_codesetter_view(@player.name)
 
-      print "\n\tAre you satisfied with this code? (yes/no) "
-      satisfied_with_code = gets.chomp.downcase == 'yes'
-      if !satisfied_with_code
-        4.times do |i|
-          @board.set_code(i, "empty")
-        end
-      end
-    end
+    #   print "\n\tAre you satisfied with this code? (yes/no) "
+    #   satisfied_with_code = gets.chomp.downcase == 'yes'
+    #   if !satisfied_with_code
+    #     4.times do |i|
+    #       @board.set_code(i, "empty")
+    #     end
+    #   end
+    # end
   end
 
   def play_round_codesetter
     4.times do |i|
-      clear_screen
-      @board.display(@player.name, @current_round)
       @board.set_move(@current_round, i, @ki_enemy.get_move(i))
     end
     @game_over = @board.winner?(@current_round)
     4.times do |i|
       clear_screen
+      @board.display(@player.name, @current_round)
       @board.display_feedback_view(@player.name, @current_round)
-      @board.get_player_feedback(@player.give_feedback, @current_round)
+      @board.get_player_feedback(@player.give_feedback(i), @current_round)
     end
   end
 

@@ -1,4 +1,3 @@
-
 class KIenemy
 
   def initialize (code_length = 4)
@@ -9,7 +8,7 @@ class KIenemy
   end
 
   def get_move(i)
-    @guess[i-1]
+    @guess[i]
   end
 
   def five_guess_algorithm
@@ -23,9 +22,10 @@ class KIenemy
 
   def generate_initial_guess(valid_colors)
     generated_guess = []
-    generated_guess[0], generated_guess[1] = valid_colors.sample
-    generated_guess[2], generated_guess[3] = valid_colors.reject{|el| el == generated_guess[0]}.sample
-    puts generated_guess
+    generated_guess[0] = valid_colors.sample
+    generated_guess[1] = generated_guess[0]
+    generated_guess[2] = valid_colors.reject{|el| el == generated_guess[0]}.sample
+    generated_guess[3] = generated_guess[2]
     generated_guess
   end
 end
